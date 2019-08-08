@@ -1,22 +1,27 @@
 package com.oasis.mvc.dao.pojo;
 
-import java.math.BigDecimal;
-import java.util.Date;
+import java.io.Serializable;
 
-public class User {
+public class User implements Serializable {
     private Integer id;
 
     private String username;
 
-    private BigDecimal sal;
+    private String password;
 
-    private Date birthday;
+    private Integer pri;
 
-    public User(Integer id, String username, BigDecimal sal, Date birthday) {
+    public User(Integer id, String username, String password, Integer pri) {
         this.id = id;
         this.username = username;
-        this.sal = sal;
-        this.birthday = birthday;
+        this.password = password;
+        this.pri = pri;
+    }
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+        this.pri = 1;
     }
 
     public User() {
@@ -39,19 +44,29 @@ public class User {
         this.username = username == null ? null : username.trim();
     }
 
-    public BigDecimal getSal() {
-        return sal;
+    public String getPassword() {
+        return password;
     }
 
-    public void setSal(BigDecimal sal) {
-        this.sal = sal;
+    public void setPassword(String password) {
+        this.password = password == null ? null : password.trim();
     }
 
-    public Date getBirthday() {
-        return birthday;
+    public Integer getPri() {
+        return pri;
     }
 
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
+    public void setPri(Integer pri) {
+        this.pri = pri;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", pri=" + pri +
+                '}';
     }
 }
